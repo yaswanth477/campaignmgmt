@@ -1,0 +1,109 @@
+{
+	"marketingChannel": "EM_elig",
+	"campaignDropDate": "2016-07-30",
+	"campaignEffectiveDate": "2016-10-12",
+	"campaignName": "QuickSilver_20160731_EMAIL",
+	"dedups": [{
+		"dedupKeys": "customer_name",
+		"retain": "last",
+		"ruleSequence": 7
+	}],
+	"eligiblePopulationType": "MTG",
+	"filters": [
+		{
+			"filterName": "EM_elig",
+			"filterOperator": "=",
+			"filterValue": "1",
+			"ruleSequence": 2
+		},
+		{
+			"filterName": "card_elig",
+			"filterOperator": "=",
+			"filterValue": "1",
+			"ruleSequence": 3
+		},
+		{
+			"filterName": "fico_bur",
+			"filterOperator": ">=",
+			"filterValue": 690,
+			"ruleSequence": 4
+		},
+		{
+			"filterName": "geo_st_cd",
+			"filterOperator": "=",
+			"filterValue": "TX",
+			"ruleSequence": 5
+		},
+		{
+			"filterName": "HBAL_MORT_LOAN_BAL_BUR",
+			"filterOperator": ">=",
+			"filterValue": "69000",
+			"ruleSequence": 6
+		}
+	],
+	"lineOfBusiness": "card_elig",
+	"privacySuppressionIndicator": null,
+	"sorts": [{
+		"order": "ascending",
+		"ruleSequence": 6,
+		"sortKeys": "cust_grp_mbr_id"
+	}],
+	"classifies": [
+	{
+		"ruleSequence": 8,
+		"classifyRules": [
+		{
+				"VendorCell": "1",
+				"VendorDesc": "'Venture'",
+				"expressions": "(VENTURE_CARD_CUST=1 OR VENTUREONE_CARD_CUST=1) AND HBAL_MORT_LOAN_BAL_BUR>100000",
+				"ruleNumber": 1
+			},
+			{
+				"VendorCell": "2",
+				"VendorDesc": "'QuickSilver'",
+				"expressions": "(QS_CARD_CUST=1 OR QSONE_CARD_CUST=1) AND HBAL_MORT_LOAN_BAL_BUR>100000",
+				"ruleNumber": 2
+			},
+			{
+				"VendorCell": "3",
+				"VendorDesc": "'VentureOne'",
+				"expressions": "(FRST_NM ='CHRISTOPHER' AND CITY_NM='LOS ANGELES' AND VC='')",
+				"ruleNumber": 3
+			},
+			{
+				"VendorCell": "4",
+				"VendorDesc": "'VentureMiles'",
+				"expressions": "(FRST_NM ='CHRISTOPHER' AND CITY_NM='LOS ANGELES' AND VC='')",
+				"ruleNumber": 4
+			}
+		]
+	}],
+	"distributes": [
+	{
+		"ruleSequence": 9,
+		"distributeRules": [
+	    {
+	    		"ruleNumber": 1,
+	    		"expressions": "Vendor_Cell = 1",
+	    		"testCellWeight": 0.4,
+	    		"controlCellWeight": 0.6
+			},
+	    	{
+	    		"ruleNumber": 2,
+	    		"expressions": "Vendor_Cell = 2",
+	    		"testCellWeight": 0.2,
+	    		"controlCellWeight": 0.8
+	    	},
+			{
+	    		"ruleNumber": 3,
+	    		"expressions": "Vendor_Cell = 3",
+	    		"testCellWeight": 0.3,
+	    		"controlCellWeight": 0.7
+	    	}
+	    ]
+	}],
+	"strategyNumber": 342342,
+	"user": "yji914",
+	"ps" : true,
+	"ruleSequence": 1
+}
